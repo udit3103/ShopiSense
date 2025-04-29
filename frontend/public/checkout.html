@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - ShopiSense</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light" data-font-size="medium">
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">ShopiSense</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About</a>
+        </div>
+        <div class="nav-controls">
+            <button id="settings-toggle" class="icon-button">⚙️</button>
+            <button id="chat-toggle" class="icon-button">💬</button>
+            <div class="cart-container">
+                <div class="cart-icon" id="cart-icon">🛒 <span class="cart-count">0</span></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="checkout-section">
+        <div class="checkout-container">
+            <div class="checkout-header">
+                <h1>Checkout</h1>
+                <p>Complete your purchase securely</p>
+            </div>
+
+            <div class="checkout-grid">
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+                    <div class="cart-items" id="checkout-items">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                    <div class="summary-totals">
+                        <div class="subtotal">
+                            <span>Subtotal</span>
+                            <span id="subtotal-amount">₹0.00</span>
+                        </div>
+                        <div class="shipping">
+                            <span>Shipping</span>
+                            <span id="shipping-amount">₹0.00</span>
+                        </div>
+                        <div class="tax">
+                            <span>GST (18%)</span>
+                            <span id="tax-amount">₹0.00</span>
+                        </div>
+                        <div class="total">
+                            <span>Total</span>
+                            <span id="total-amount">₹0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Checkout Form -->
+                <div class="checkout-form">
+                    <form id="checkout-form" action="payment.html">
+                        <div class="form-section">
+                            <h3>Contact Information</h3>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required placeholder="Email">
+                                <input type="tel" id="phone" name="phone" required placeholder="Mobile Number (10 digits)" pattern="[6-9][0-9]{9}" title="Please enter valid 10 digit mobile number">
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Shipping Address</h3>
+                            <div class="form-group">
+                                <input type="text" id="firstName" name="firstName" required placeholder="First Name">
+                                <input type="text" id="lastName" name="lastName" required placeholder="Last Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="address" name="address" required placeholder="Flat, House no., Building, Company, Apartment">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="landmark" name="landmark" placeholder="Landmark (Optional)">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="locality" name="locality" required placeholder="Area, Street, Sector, Village">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="city" name="city" required placeholder="City/Town">
+                                <select id="state" name="state" required>
+                                    <option value="">Select State</option>
+                                    <option value="AN">Andaman and Nicobar Islands</option>
+                                    <option value="AP">Andhra Pradesh</option>
+                                    <option value="AR">Arunachal Pradesh</option>
+                                    <option value="AS">Assam</option>
+                                    <option value="BR">Bihar</option>
+                                    <option value="CH">Chandigarh</option>
+                                    <option value="CT">Chhattisgarh</option>
+                                    <option value="DN">Dadra and Nagar Haveli</option>
+                                    <option value="DD">Daman and Diu</option>
+                                    <option value="DL">Delhi</option>
+                                    <option value="GA">Goa</option>
+                                    <option value="GJ">Gujarat</option>
+                                    <option value="HR">Haryana</option>
+                                    <option value="HP">Himachal Pradesh</option>
+                                    <option value="JK">Jammu and Kashmir</option>
+                                    <option value="JH">Jharkhand</option>
+                                    <option value="KA">Karnataka</option>
+                                    <option value="KL">Kerala</option>
+                                    <option value="LA">Ladakh</option>
+                                    <option value="LD">Lakshadweep</option>
+                                    <option value="MP">Madhya Pradesh</option>
+                                    <option value="MH">Maharashtra</option>
+                                    <option value="MN">Manipur</option>
+                                    <option value="ML">Meghalaya</option>
+                                    <option value="MZ">Mizoram</option>
+                                    <option value="NL">Nagaland</option>
+                                    <option value="OR">Odisha</option>
+                                    <option value="PY">Puducherry</option>
+                                    <option value="PB">Punjab</option>
+                                    <option value="RJ">Rajasthan</option>
+                                    <option value="SK">Sikkim</option>
+                                    <option value="TN">Tamil Nadu</option>
+                                    <option value="TG">Telangana</option>
+                                    <option value="TR">Tripura</option>
+                                    <option value="UP">Uttar Pradesh</option>
+                                    <option value="UT">Uttarakhand</option>
+                                    <option value="WB">West Bengal</option>
+                                </select>
+                                <input type="text" id="pincode" name="pincode" required placeholder="PIN Code" pattern="[1-9][0-9]{5}" title="Please enter valid 6 digit PIN code">
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Shipping Method</h3>
+                            <div class="shipping-options">
+                                <label class="shipping-option">
+                                    <input type="radio" name="shipping" value="standard" checked>
+                                    <span class="option-info">
+                                        <span class="option-name">Standard Delivery</span>
+                                        <span class="option-price">Free</span>
+                                        <span class="option-duration">4-5 Days</span>
+                                    </span>
+                                </label>
+                                <label class="shipping-option">
+                                    <input type="radio" name="shipping" value="express">
+                                    <span class="option-info">
+                                        <span class="option-name">Express Delivery</span>
+                                        <span class="option-price">₹99</span>
+                                        <span class="option-duration">1-2 Days</span>
+                                    </span>
+                                </label>
+                                <label class="shipping-option">
+                                    <input type="radio" name="shipping" value="same-day">
+                                    <span class="option-info">
+                                        <span class="option-name">Same Day Delivery</span>
+                                        <span class="option-price">₹199</span>
+                                        <span class="option-duration">Today</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="secondary-btn" onclick="window.history.back()">Back to Cart</button>
+                            <button type="submit" id="proceed-to-payment" class="primary-btn">Proceed to Payment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Settings Panel -->
+    <aside class="settings-panel" id="settings-panel" aria-hidden="true">
+        <div class="settings-header">
+            <h3>Customize Your Experience</h3>
+            <button class="close-settings" aria-label="Close settings">×</button>
+        </div>
+        <div class="settings-content">
+            <div class="settings-section">
+                <h4>Theme</h4>
+                <div class="theme-options">
+                    <button class="theme-btn active" data-theme="light">Light</button>
+                    <button class="theme-btn" data-theme="dark">Dark</button>
+                    <button class="theme-btn" data-theme="blue">Blue</button>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h4>Font Size</h4>
+                <div class="font-size-options">
+                    <button class="font-btn" data-size="small">Small</button>
+                    <button class="font-btn active" data-size="medium">Medium</button>
+                    <button class="font-btn" data-size="large">Large</button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Chatbot Interface -->
+    <div class="chatbot-container" style="display: none;">
+        <div class="chat-header">
+            <h3>Chat with us</h3>
+            <button class="close-btn">×</button>
+        </div>
+        <div class="chat-messages">
+            <!-- Messages will be dynamically loaded here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message...">
+            <button id="send-message">Send</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html> 

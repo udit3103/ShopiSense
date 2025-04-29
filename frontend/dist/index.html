@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered E-Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-BZKfnnzm.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BCA5btxe.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="logo">AI Shop</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+        <div class="nav-controls">
+            <button id="settings-toggle" class="settings-btn" aria-label="Settings">⚙️</button>
+            <button id="chat-toggle" class="chat-btn" aria-label="Chat">💬</button>
+            <div class="cart-icon">🛒</div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1>Welcome to AI-Powered Shopping</h1>
+                <p>Experience the future of e-commerce with our AI assistant</p>
+                <button class="cta-button">Shop Now</button>
+            </div>
+            <div id="3d-container"></div>
+        </div>
+
+        <section class="featured-products">
+            <h2>Featured Products</h2>
+            <div class="product-grid" id="product-container">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Settings Panel -->
+    <aside class="settings-panel" id="settings-panel" aria-hidden="true">
+        <div class="settings-header">
+            <h3>Customize Your Experience</h3>
+            <button class="close-settings" aria-label="Close settings">×</button>
+        </div>
+        <div class="settings-content">
+            <div class="settings-section">
+                <h4>Theme</h4>
+                <div class="theme-options">
+                    <button class="theme-btn light" data-theme="light">Light Theme</button>
+                    <button class="theme-btn dark" data-theme="dark">Dark Theme</button>
+                    <button class="theme-btn blue" data-theme="blue">Blue Theme</button>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h4>Font Size</h4>
+                <div class="font-size-options">
+                    <button class="font-btn" data-size="small">Small</button>
+                    <button class="font-btn" data-size="medium">Medium</button>
+                    <button class="font-btn" data-size="large">Large</button>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h4>Layout</h4>
+                <div class="layout-options">
+                    <button class="layout-btn" data-layout="grid">Grid View</button>
+                    <button class="layout-btn" data-layout="list">List View</button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <h3>AI Assistant</h3>
+            <button class="close-chat">×</button>
+        </div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Ask me anything...">
+            <button id="send-message">Send</button>
+        </div>
+    </div>
+
+</body>
+</html> 

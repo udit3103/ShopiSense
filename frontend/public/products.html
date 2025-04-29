@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - ShopiSense</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        .products-section {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .products-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .products-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .products-header p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .filters-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .category-filters {
+            display: flex;
+            gap: 15px;
+        }
+
+        .category-btn {
+            padding: 8px 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 20px;
+            background: transparent;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .sort-options {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sort-options select {
+            padding: 8px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .buy-now-btn, .add-to-cart-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .buy-now-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .add-to-cart-btn {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .buy-now-btn:hover, .add-to-cart-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .page-btn {
+            padding: 8px 15px;
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .filters-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .category-filters {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .sort-options {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body class="light" data-font-size="medium">
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">ShopiSense</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html" class="active">Products</a>
+            <a href="about.html">About</a>
+        </div>
+        <div class="nav-controls">
+            <button id="settings-toggle" class="icon-button">⚙️</button>
+            <button id="chat-toggle" class="icon-button">💬</button>
+            <div class="cart-container">
+                <div class="cart-icon" id="cart-icon">🛒 <span class="cart-count">0</span></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="products-section">
+        <div class="products-header">
+            <h1>Our Products</h1>
+            <p>Discover our curated collection of premium products</p>
+        </div>
+        
+        <div class="filters-section">
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="electronics">Electronics</button>
+                <button class="category-btn" data-category="wearables">Wearables</button>
+                <button class="category-btn" data-category="accessories">Accessories</button>
+                <button class="category-btn" data-category="smart-home">Smart Home</button>
+            </div>
+            <div class="sort-options">
+                <label for="sort-select">Sort by:</label>
+                <select id="sort-select">
+                    <option value="default">Default</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Rating</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="product-container" class="product-grid">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+    </main>
+
+    <!-- Settings Panel -->
+    <aside class="settings-panel" id="settings-panel" aria-hidden="true">
+        <div class="settings-header">
+            <h3>Customize Your Experience</h3>
+            <button class="close-settings" aria-label="Close settings">×</button>
+        </div>
+        <div class="settings-content">
+            <div class="settings-section">
+                <h4>Theme</h4>
+                <div class="theme-options">
+                    <button class="theme-btn active" data-theme="light">Light</button>
+                    <button class="theme-btn" data-theme="dark">Dark</button>
+                    <button class="theme-btn" data-theme="blue">Blue</button>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h4>Font Size</h4>
+                <div class="font-size-options">
+                    <button class="font-btn" data-size="small">Small</button>
+                    <button class="font-btn active" data-size="medium">Medium</button>
+                    <button class="font-btn" data-size="large">Large</button>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h4>Layout</h4>
+                <div class="layout-options">
+                    <button class="layout-btn active" data-layout="grid">Grid</button>
+                    <button class="layout-btn" data-layout="list">List</button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Chatbot Interface -->
+    <div class="chatbot-container" style="display: none;">
+        <div class="chat-header">
+            <h3>Chat with us</h3>
+            <button class="close-btn">×</button>
+        </div>
+        <div class="chat-messages">
+            <!-- Messages will be dynamically loaded here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message...">
+            <button id="send-message">Send</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="chatbot.js"></script>
+
+    <script>
+    function handleCheckoutSubmission(e) {
+        e.preventDefault();
+        console.log('Processing checkout submission...');
+        
+        // Get form data
+        const formData = new FormData(e.target);
+        
+        // Get cart data
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        if (cart.length === 0) {
+            alert('Your cart is empty!');
+            return;
+        }
+        
+        // Validate required fields
+        const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'address', 'city', 'state', 'pincode'];
+        const missingFields = requiredFields.filter(field => !formData.get(field));
+        
+        if (missingFields.length > 0) {
+            alert('Please fill in all required fields: ' + missingFields.join(', '));
+            return;
+        }
+
+        // Calculate totals
+        let subtotal = 0;
+        cart.forEach(item => {
+            subtotal += item.price * item.quantity;
+        });
+        
+        const shippingMethod = formData.get('shipping') || 'standard';
+        const shipping = calculateShippingCost(shippingMethod);
+        const gst = Math.round(subtotal * 0.18);
+        const total = subtotal + shipping + gst;
+        
+        // Create order data
+        const orderData = {
+            contact: {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone')
+            },
+            shipping: {
+                address: formData.get('address'),
+                landmark: formData.get('landmark') || '',
+                locality: formData.get('locality') || '',
+                city: formData.get('city'),
+                state: formData.get('state'),
+                pincode: formData.get('pincode'),
+                method: shippingMethod
+            },
+            cart: cart,
+            pricing: {
+                subtotal: subtotal,
+                shipping: shipping,
+                gst: gst,
+                total: total
+            },
+            timestamp: new Date().toISOString()
+        };
+
+        try {
+            // Save order data
+            localStorage.setItem('orderData', JSON.stringify(orderData));
+            console.log('Order data saved:', orderData);
+            
+            // Redirect to payment page
+            window.location.href = 'payment.html';
+        } catch (error) {
+            console.error('Error saving order data:', error);
+            alert('There was an error processing your order. Please try again.');
+        }
+    }
+    </script>
+</body>
+</html> 

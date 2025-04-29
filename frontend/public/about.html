@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ShopiSense - Your Smart Shopping Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .about-section {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .about-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .team-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .team-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .team-member {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="light" data-font-size="medium">
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">ShopiSense</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html" class="active">About</a>
+        </div>
+        <div class="nav-controls">
+            <button id="settings-toggle" class="icon-button">⚙️</button>
+            <button id="chat-toggle" class="icon-button">💬</button>
+            <div class="cart-container">
+                <div class="cart-icon" id="cart-icon">🛒 <span class="cart-count">0</span></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="about-section">
+        <div class="about-header">
+            <h1>About ShopiSense</h1>
+            <p>Your Smart Shopping Experience</p>
+        </div>
+
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Our Story</h2>
+                <p>ShopiSense was founded with a simple mission: to revolutionize the way people shop online. We combine cutting-edge AI technology with a user-friendly interface to create a shopping experience that's both intuitive and enjoyable.</p>
+                <p>Our platform uses advanced algorithms to understand your preferences and provide personalized recommendations, making your shopping journey more efficient and satisfying.</p>
+            </div>
+            <div class="about-text">
+                <h2>Our Vision</h2>
+                <p>We envision a future where shopping is not just a transaction, but an engaging experience. Our AI-powered assistant helps you make informed decisions, while our smart features make the entire process seamless.</p>
+                <p>We're committed to continuous innovation, ensuring that ShopiSense remains at the forefront of e-commerce technology.</p>
+            </div>
+        </div>
+
+        <div class="about-features">
+            <div class="feature-card">
+                <h3>AI-Powered Shopping</h3>
+                <p>Our intelligent assistant helps you find exactly what you're looking for, with personalized recommendations based on your preferences.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Smart Price Tracking</h3>
+                <p>Never miss a deal with our advanced price tracking system that alerts you when prices drop on items you're interested in.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Secure Transactions</h3>
+                <p>Shop with confidence knowing that your transactions are protected by state-of-the-art security measures.</p>
+            </div>
+            <div class="feature-card">
+                <h3>24/7 Support</h3>
+                <p>Our AI assistant is always available to help you with any questions or concerns you might have.</p>
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h2>Our Team</h2>
+            <p>Meet the people behind ShopiSense</p>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a" alt="Team Member">
+                    <h3>Rahul Sharma</h3>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d38db5d6b3" alt="Team Member">
+                    <h3>Priya Patel</h3>
+                    <p>Head of AI</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5" alt="Team Member">
+                    <h3>Arjun Kumar</h3>
+                    <p>Lead Developer</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e" alt="Team Member">
+                    <h3>Neha Gupta</h3>
+                    <p>UX Designer</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Settings Panel -->
+    <aside class="settings-panel" id="settings-panel" aria-hidden="true">
+        <div class="settings-header">
+            <h3>Customize Your Experience</h3>
+            <button class="close-settings" aria-label="Close settings">×</button>
+        </div>
+        <div class="settings-content">
+            <div class="settings-section">
+                <h4>Theme</h4>
+                <div class="theme-options">
+                    <button class="theme-btn active" data-theme="light">Light</button>
+                    <button class="theme-btn" data-theme="dark">Dark</button>
+                    <button class="theme-btn" data-theme="blue">Blue</button>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h4>Font Size</h4>
+                <div class="font-size-options">
+                    <button class="font-btn" data-size="small">Small</button>
+                    <button class="font-btn active" data-size="medium">Medium</button>
+                    <button class="font-btn" data-size="large">Large</button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Chatbot Interface -->
+    <div class="chatbot-container" style="display: none;">
+        <div class="chat-header">
+            <h3>Chat with us</h3>
+            <button class="close-btn">×</button>
+        </div>
+        <div class="chat-messages">
+            <!-- Messages will be dynamically loaded here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message...">
+            <button>Send</button>
+        </div>
+    </div>
+
+    <!-- Include the chatbot script -->
+    <script src="chatbot.js"></script>
+
+    <script type="module" src="/app.js"></script>
+</body>
+</html> 

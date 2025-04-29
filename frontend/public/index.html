@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopiSense - Smart Shopping Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animation Libraries -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="light" data-font-size="medium">
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand">ShopiSense</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+        </div>
+        <div class="nav-controls">
+            <button id="settings-toggle" class="icon-button">Settings</button>
+            <button id="chat-toggle" class="icon-button">Chat</button>
+        </div>
+    </nav>
+
+    <main data-barba="container" data-barba-namespace="home">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="animate-text">Welcome to ShopiSense</h1>
+                <div class="animated-features">
+                    <p class="feature-item">🛍️ Smart Shopping Experience</p>
+                    <p class="feature-item">🤖 AI-Powered Recommendations</p>
+                    <p class="feature-item">💳 Seamless Checkout Process</p>
+                    <p class="feature-item">🎯 Personalized Deals</p>
+                </div>
+                <a href="products.html" class="cta-button">Start Shopping</a>
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+            </div>
+            <div id="animation-container" class="animation-container"></div>
+        </section>
+
+        <section class="featured-products">
+            <h2></h2>
+            <div class="product-grid">
+                <!-- Products will be loaded dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel" class="settings-panel">
+        <div class="settings-header">
+            <h3>Settings</h3>
+            <button class="close-settings">×</button>
+        </div>
+        <div class="settings-content">
+            <div class="settings-section">
+                <h4>Theme</h4>
+                <div class="theme-buttons">
+                    <button class="theme-btn" data-theme="light">Light</button>
+                    <button class="theme-btn" data-theme="dark">Dark</button>
+                    <button class="theme-btn" data-theme="blue">Blue</button>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h4>Font Size</h4>
+                <div class="font-buttons">
+                    <button class="font-btn" data-size="small">Small</button>
+                    <button class="font-btn" data-size="medium">Medium</button>
+                    <button class="font-btn" data-size="large">Large</button>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h4>Layout</h4>
+                <div class="layout-buttons">
+                    <button class="layout-btn" data-layout="grid">Grid</button>
+                    <button class="layout-btn" data-layout="list">List</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Interface -->
+    <div class="chatbot-container" style="display: none;">
+        <div class="chat-header">
+            <h3>Chat with us</h3>
+            <button class="close-btn">×</button>
+        </div>
+        <div class="chat-messages">
+            <!-- Messages will be dynamically loaded here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message...">
+            <button id="send-message">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // GSAP Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate features with stagger
+            gsap.from('.feature-item', {
+                duration: 0.8,
+                x: -50,
+                opacity: 0,
+                stagger: 0.2,
+                ease: 'power2.out'
+            });
+
+            // Animate CTA button
+            gsap.fromTo('.cta-button', {
+                y: 30,
+                opacity: 0
+            }, {
+                duration: 1,
+                y: 0,
+                opacity: 1,
+                delay: 1,
+                ease: 'elastic.out(1, 0.5)'
+            });
+
+            // Ensure CTA button maintains visibility
+            gsap.to('.cta-button', { opacity: 1, duration: 0 });
+
+            // Animate floating shapes
+            gsap.to('.shape', {
+                y: 'random(-20, 20)',
+                x: 'random(-20, 20)',
+                rotation: 'random(-360, 360)',
+                duration: 'random(2, 4)',
+                repeat: -1,
+                yoyo: true,
+                ease: 'none',
+                stagger: {
+                    amount: 2,
+                    from: 'random'
+                }
+            });
+        });
+    </script>
+    <script src="app.js"></script>
+    <script src="animations.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html> 
